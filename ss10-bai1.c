@@ -14,4 +14,6 @@ int main(){
 	if (flag==0){
 		printf("phan tu khong ton tai trong mang ");
 	}
+	
+	return 0;
 }
