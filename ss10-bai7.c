@@ -7,26 +7,34 @@ int main (){
 	scanf("%d",&a);
 	printf("moi ban nhap so cot ");
 	scanf("%d",&b);
-	int array[a][b];
-	int size=sizeof(array)/sizeof(int);
 	
+	int array[a][b];
+	int index;
+	int temp[a * b];
+	index=0;
 	for (int i=0;i<a;i++){
 		for (int j=0;j<b;j++){
 			printf("nhap gia tri mang array[%d][%d] : ",i,j);
 			scanf("%d",&array[i][j]);
+			temp[index++]=array[i][j];
 		}
 	}
 	
-	for (int i=0;i<a;i++){
-		for (int j=0;j<b-1;j++){
-			for (int k=0;k<b-j-1;k++){
-				if (array[i][k]>array[i][k+1]){
-					int temp;
-					temp=array[i][k];
-					array[i][k]=array[i][k+1];
-					array[i][k+1]=temp;
-				}
+
+	for (int i=0;i<index-1;i++){
+		for (int j=0;j<index-i-1;j++){
+			if (temp[j]>temp[j+1]){
+				int swap;
+				swap=temp[j];
+				temp[j]=temp[j+1];
+				temp[j+1]=swap;
 			}
+		}
+	}
+	index=0;
+	for (int i=0;i<a;i++){
+		for (int j=0;j<b;j++){
+			array[i][j]=temp[index++];
 		}
 	}
 	
